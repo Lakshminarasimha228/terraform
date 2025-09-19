@@ -1,0 +1,5 @@
+CATALOGUE_HOST: catalogue.lakshmi.cyou
+USER_HOST: user.lakshmi.cyou
+CART_HOST: cart.lakshmi.cyou
+SHIPPING_HOST: shipping.lakshmi.cyou
+PAYMENT_HOST: payment.lakshmi.cyou

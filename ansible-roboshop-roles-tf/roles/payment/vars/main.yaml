@@ -1,0 +1,5 @@
+CART_HOST: cart.lakshmi.cyou
+USER_HOST: user.lakshmi.cyou
+RABBITMQ_HOST: rabbitmq.lakshmi.cyou
+RABBITMQ_USER: roboshop
+RABBITMQ_PASSWORD: roboshop123
