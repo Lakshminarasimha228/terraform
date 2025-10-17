@@ -1,26 +1,27 @@
-resource "aws_instance" "roboshop" {
-  count                  = 4
+resource "aws_instance" "example" {
   ami                    = var.ami_id # left and right side names no need to be same
-  instance_type          = var.environment == "dev" ? "t3.micro" : "t3.small"
+  instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.allow_all.id]
 
-  tags = {
-    Name = var.instances[count.index]
-  }
+  tags = var.ec2_tags
 }
 
 resource "aws_security_group" "allow_all" {
+  name        = var.sg_name        # data type
   description = var.sg_description # string
 
-
-  ingress {
-    from_port        = var.from_port # this 2 some number because of no brackets
-    to_port          = var.to_port
-    protocol         = "-1"
-    cidr_blocks      = var.cidr_blocks # list 
-    ipv6_cidr_blocks = ["::/0"]
+  dynamic "ingress" {
+    for_each = var.ingress_ports
+    content {
+      from_port        = ingress.value["from_port"]
+      to_port          = ingress.value["to_port"]
+      protocol         = "-1"
+      cidr_blocks      = var.cidr_blocks
+      ipv6_cidr_blocks = ["::/0"]
+    }
   }
-  egress {
+
+  egress { # block
     from_port        = var.from_port # this 2 some number because of no brackets
     to_port          = var.to_port
     protocol         = "-1"

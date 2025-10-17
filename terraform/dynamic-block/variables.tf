@@ -1,27 +1,27 @@
-variable "ami_id" {
+variable "ami_id" { # block
   type        = string
   default     = "ami-09c813fb71547fc4f"
-  description = "AMI ID of joindevops RHEL9"
+  description = "AMI ID of joindevops rhel9 "
 }
 
 variable "instance_type" {
-  default = "t3.micro"
+  default = " t3.micro"
 }
 
 variable "ec2_tags" {
   type = map(string)
   default = {
-    Name    = "Roboshop"       # map
+    Name    = "HelloWorld"     # map
     Purpose = "variables-demo" # string
   }
 }
 
 variable "sg_name" {
-  default = "allow-all"
+  default = "allow_all"
 }
 
 variable "sg_description" {
-  default = "allowing all ports from internet"
+   default = "allowing all ports from internet"
 }
 
 variable "from_port" {
@@ -44,18 +44,19 @@ variable "sg_tags" {
   }
 }
 
-variable "environment" {
-  default = "prod"
-}
-
-variable "instances" {
-  default = ["mongodb", "redis", "mysql", "rabbitmq"]
-}
-
-variable "zone_id" {
-  default = "Z04271653U7W4X8SKWK80"
-}
-
-variable "domain_name" {
-  default = "lakshmi.cyou"
+variable "ingress_ports" {
+  default = [ # list(map)
+    {
+      from_port = 22
+      to_port   = 22
+    },
+    {
+      from_port = 80
+      to_port   = 80
+    },
+    {
+      from_port = 8080
+      to_port   = 8080
+    },
+  ]
 }

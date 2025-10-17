@@ -59,3 +59,9 @@ variable "zone_id" {
 variable "domain_name" {
   default = "lakshmi.cyou"
 }
+variable "common_tags" {
+  default = {
+    project   = "roboshop"
+    Terraform = "true"
+  }
+}

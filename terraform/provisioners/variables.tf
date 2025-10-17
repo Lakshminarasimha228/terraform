@@ -11,13 +11,13 @@ variable "instance_type" {
 variable "ec2_tags" {
   type = map(string)
   default = {
-    Name    = "Roboshop"       # map
-    Purpose = "variables-demo" # string
+    Name    = "HelloWorld"
+    Purpose = "variables-demo"
   }
 }
 
 variable "sg_name" {
-  default = "allow-all"
+  default = "hello-all"
 }
 
 variable "sg_description" {
@@ -40,22 +40,6 @@ variable "cidr_blocks" {
 
 variable "sg_tags" {
   default = {
-    Name = "allow-all"
+    Name = "hello-all"
   }
-}
-
-variable "environment" {
-  default = "prod"
-}
-
-variable "instances" {
-  default = ["mongodb", "redis", "mysql", "rabbitmq"]
-}
-
-variable "zone_id" {
-  default = "Z04271653U7W4X8SKWK80"
-}
-
-variable "domain_name" {
-  default = "lakshmi.cyou"
 }
